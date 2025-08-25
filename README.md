@@ -111,8 +111,3 @@ This project is licensed under the MIT License – feel free to modify and distr
 This project was assigned by the AIO course from [AI VIET NAM](https://www.facebook.com/aivietnam.edu.vn) and completed by me as a participant of the course.
 
 If you find this project useful, consider ⭐️ starring the repository or contributing to further improvements!
-
-## 📬 Contact
-For any questions or collaboration opportunities, feel free to reach out:
-
-📧 Email: tainguyenphu2502@gmail.com
