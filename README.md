@@ -1,45 +1,67 @@
-# Scene Text Recognition (STR)
-
+# Scene Text Recognition (STR) – End-to-End OCR System
 
 ## 📌 Project Overview
 
-This repository contains a complete **Scene Text Recognition (STR)** pipeline that integrates **YOLOv11m** for text detection and **CRNN** for text recognition. The system efficiently detects and recognizes text in natural scene images using deep learning models.
+This repository implements a production-oriented **Scene Text Recognition (STR) system** for detecting and recognizing text in natural scene images.
 
-### Pipeline Overview
+The system is designed as an **end-to-end OCR pipeline**, combining deep learning-based text detection and recognition models into a unified architecture suitable for real-world image processing, automation, and document understanding use cases.
 
-**1. Text Detection**
-- Utilizes **YOLOv11m** to identify text regions in images.
-- Returns bounding boxes along with confidence scores.
+---
 
-**2. Text Recognition**
-- Employs **CRNN** (Convolutional Recurrent Neural Network) to recognize text from detected regions.
-- Uses **CTC Loss** for sequence prediction.
+## 🧠 System Design Overview
 
-**3. End-to-End OCR System**
-- Combines detection and recognition into a fully functional pipeline.
-- Outputs structured text predictions.
+The system follows a modular OCR architecture:
+
+### 🔹 1. Text Detection Layer
+- Model: **YOLOv11m**
+- Purpose: Detect text regions in natural images
+- Output: Bounding boxes + confidence scores
+
+### 🔹 2. Text Recognition Layer
+- Model: **CRNN (Convolutional Recurrent Neural Network)**
+- Backbone: **ResNet34**
+- Loss Function: **CTC Loss**
+- Purpose: Convert cropped text regions into structured text sequences
+
+### 🔹 3. End-to-End OCR Pipeline
+- Combines detection + recognition into a single workflow
+- Processes raw images → structured text output
+- Supports batch and real-time inference
+
+---
 
 ![STR Pipeline](assets/pipeline.png)
 
-### Deployment
+## 🚀 Deployment Architecture
 
-**1. Web Interface**: Built with **Streamlit** for an interactive user experience.
+The system is deployed using a multi-layer service architecture:
 
-**2. API Service**: Powered by **FastAPI** and **Ray Serve** for scalable, high-performance OCR processing.
+### 🔹 UI Layer
+- Streamlit-based web interface
+- Interactive image upload and inference visualization
 
-<p align="center">
-  <img src="assets/demo1.png" width="49%">
-  <img src="assets/demo2.png" width="49%">
-</p>
+### 🔹 API Layer
+- FastAPI service for OCR inference
+- Handles model requests and preprocessing
 
+### 🔹 Inference Layer
+- Ray Serve for distributed and scalable model execution
+- Optimized for GPU-based inference
+
+---
 
 ## 🚀 Key Features
 
-- **State-of-the-art models**: Uses **YOLOv11m** for detection and **CRNN with ResNet34 backbone** for recognition.
-- **Optimized for real-world datasets**: Trained and fine-tuned on **ICDAR2003** dataset.
-- **Scalable deployment**: Web-based interface with **Streamlit**, **FastAPI**, and **Ray Serve**.
-- **GPU acceleration**: Fully optimized for Kaggle’s **T4 GPU (16GB)** for efficient training and inference.
-- **Modular design**: Easily extendable and integrable into other OCR applications.
+- End-to-end OCR pipeline (Detection → Recognition → Output)
+- YOLOv11m-based text detection
+- CRNN + ResNet34-based sequence recognition
+- CTC-based decoding for variable-length text
+- Scalable deployment using FastAPI + Ray Serve
+- Interactive UI with Streamlit
+- GPU-optimized training and inference (NVIDIA T4)
+- Modular design for easy extension and integration
+
+---
 
 
 
@@ -66,11 +88,11 @@ Scene-Text-Recognition/
 # 0.881      0.905      0.925 (val)
 ```
 
+# Install PyTorch (GPU support optional)
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 
-## 🛠 Installation & Usage
-
-**Important Notice**:
-This project is built using FastAPI and Ray Serve. To access the Streamlit web app, you must **clone this repository and start the server first** before running the Streamlit interface.
+# Install project dependencies
+pip install -r requirements.txt
 
 ⚠️ **Directly accessing the provided URL will not work** because the backend server must be running locally.
 
